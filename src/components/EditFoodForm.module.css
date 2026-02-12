@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  gap: 16px;
+}
+
+.image {
+  flex-shrink: 0;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid #dae7e3;
+}
+
+.inputContainer {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.title {
+  flex-grow: 1;
+}
+
+.calorie {
+  width: 128px;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
