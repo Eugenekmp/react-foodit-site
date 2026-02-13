@@ -5,8 +5,11 @@ import Input from "./Input";
 import Textarea from "./Textarea";
 import placeholderImage from "../assets/placeholder.png";
 import styles from "./EditFoodForm.module.css";
+import useTranslate from "../hooks/useTranslate";
 
 function EditFoodForm({ initialValue, onSubmit }) {
+  const t = useTranslate();
+
   const inputRef = useRef(null);
 
   const submit = (formData) => {
@@ -31,21 +34,21 @@ function EditFoodForm({ initialValue, onSubmit }) {
               name="title"
               ref={inputRef}
               defaultValue={initialValue.title}
-              placeholder="음식 이름"
+              placeholder={t("review title placeholder")}
             />
             <Input
               className={styles.calorie}
               name="calorie"
               type="number"
               defaultValue={initialValue.calorie}
-              placeholder="칼로리 (KCal)"
+              placeholder={t("review calorie placeholder")}
             />
           </div>
           <Textarea
             className={styles.content}
             name="content"
             defaultValue={initialValue.content}
-            placeholder="내용을 작성해 주세요."
+            placeholder={t("review content placeholder")}
           />
         </div>
       </div>

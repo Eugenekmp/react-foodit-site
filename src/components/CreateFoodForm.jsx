@@ -5,8 +5,11 @@ import Input from "./Input";
 import Textarea from "./Textarea";
 import styles from "./CreateFoodForm.module.css";
 import placeholderImage from "../assets/placeholder.png";
+import useTranslate from "../hooks/useTranslate";
 
 function CreateFoodForm({ onSubmit }) {
+  const t = useTranslate();
+
   const inputRef = useRef(null);
 
   const submit = (formData) => {
@@ -30,19 +33,19 @@ function CreateFoodForm({ onSubmit }) {
               className={styles.title}
               name="title"
               ref={inputRef}
-              placeholder="음식 이름"
+              placeholder={t("review title placeholder")}
             />
             <Input
               className={styles.calorie}
               name="calorie"
               type="number"
-              placeholder="칼로리 (KCal)"
+              placeholder={t("review calorie placeholder")}
             />
           </div>
           <Textarea
             className={styles.content}
             name="content"
-            placeholder="내용을 작성해 주세요."
+            placeholder={t("review content placeholder")}
           />
         </div>
       </div>

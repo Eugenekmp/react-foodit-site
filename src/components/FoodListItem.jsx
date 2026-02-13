@@ -4,9 +4,13 @@ import styles from "./FoodListItem.module.css";
 import EditFoodForm from "./EditFoodForm";
 import Button from "./Button";
 import placeholderImage from "../assets/placeholder.png";
+import useTranslate from "../hooks/useTranslate";
 
 function FoodListItem({ item, onDelete, onUpdate }) {
+  const t = useTranslate();
+
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+
   const { imgUrl, title, calorie, content } = item;
 
   const handleEditFormSubmit = (data) => {
@@ -36,10 +40,10 @@ function FoodListItem({ item, onDelete, onUpdate }) {
               variant="outlinePrimary"
               onClick={() => setIsEditModalOpen(true)}
             >
-              수정
+              {t("edit button")}
             </Button>
             <Modal
-              title="칼로리 수정하기"
+              title={t("edit calorie title")}
               isOpen={isEditModalOpen}
               onClose={() => setIsEditModalOpen(false)}
             >
@@ -52,7 +56,7 @@ function FoodListItem({ item, onDelete, onUpdate }) {
               variant="outlineSecondary"
               onClick={() => onDelete(item.id)}
             >
-              삭제
+              {t("delete button")}
             </Button>
           </div>
         </div>

@@ -1,8 +1,11 @@
 import logo from "../assets/logo.svg";
 import textLogo from "../assets/text-logo.svg";
+import useTranslate from "../hooks/useTranslate";
 import styles from "./Layout.module.css";
+import LocaleSelect from "./LocaleSelect";
 
 function Layout({ children }) {
+  const t = useTranslate();
   return (
     <div className={styles.layout}>
       <div className={styles.gnb}>
@@ -14,7 +17,10 @@ function Layout({ children }) {
       <div className={styles.footer}>
         <div className={styles.footerContent}>
           <img className={styles.textLogo} src={textLogo} alt="Foodit" />
-          <span>서비스 이용약관 | 개인정보 처리방침</span>
+          <span>
+            {t("terms of service")} | {t("privacy policy")}
+          </span>
+          <LocaleSelect />
         </div>
       </div>
     </div>

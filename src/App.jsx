@@ -7,8 +7,10 @@ import Layout from "./components/Layout.jsx";
 import styles from "./App.module.css";
 import Input from "./components/Input";
 import Button from "./components/Button";
+import useTranslate from "./hooks/useTranslate.js";
 
 function App() {
+  const t = useTranslate();
   const [items, setItems] = useState(mockItems);
   const [order, setOrder] = useState("createdAt");
   const [keyword, setKeyword] = useState("");
@@ -37,7 +39,7 @@ function App() {
       id: items.length + 1,
       ...data,
       createdAt: now.valueOf(),
-      updateddAt: now.valueOf(),
+      updatedAt: now.valueOf(),
     };
     setItems([newItem, ...items]);
     setIsCreated(false);
@@ -64,7 +66,7 @@ function App() {
         <Input
           variant="search"
           onChange={handleKeywordChange}
-          placeholder="검색어를 입력하세요"
+          placeholder={t("search")}
         />
         <div className={styles.buttonContainer}>
           <button
@@ -73,7 +75,7 @@ function App() {
             }`}
             onClick={() => setOrder("createdAt")}
           >
-            최신순
+            {t("sort by latest")}
           </button>
           <button
             className={`${styles.filter} ${
@@ -81,11 +83,13 @@ function App() {
             }`}
             onClick={() => setOrder("calorie")}
           >
-            칼로리순
+            {t("sort by calorie")}
           </button>
-          <Button onClick={() => setIsCreated(true)}>추가하기</Button>
+          <Button onClick={() => setIsCreated(true)}>
+            {t("create button")}
+          </Button>
           <Modal
-            title="칼로리 기록하기"
+            title={t("create calorie title")}
             isOpen={isCreated}
             onClose={() => setIsCreated(false)}
           >
